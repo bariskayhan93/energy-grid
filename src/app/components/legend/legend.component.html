@@ -1,8 +1,6 @@
-<div class="legend glass">
-  @for (status of statusList; track status) {
-    <div>
-      <span [style.background]="colors[status]"></span>
-      <span>{{ labels[status] }}</span>
-    </div>
-  }
-</div>
+@for (status of statusList; track status) {
+  <div class="row">
+    <span class="dot" [style.background]="colors[status]"></span>
+    <span>{{ labels[status] }}</span>
+  </div>
+}

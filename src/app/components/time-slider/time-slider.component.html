@@ -1,16 +1,8 @@
-<div class="slider-bar glass">
-  <button class="play-btn" (click)="sim.toggle()">
-    {{ (sim.playing | async) ? '\u23F8' : '\u25B6' }}
-  </button>
+<button (click)="sim.toggle()">{{ (sim.playing | async) ? '⏸' : '▶' }}</button>
+<button class="speed" (click)="sim.cycleSpeed()">{{ (sim.speed | async) }}x</button>
 
-  <div class="slider-wrap">
-    <input type="range" min="0" max="23" step="1"
-      [value]="(gridState.currentHour$ | async) ?? 12"
-      (input)="onSlide($event)" />
-    <div class="labels">
-      <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:00</span>
-    </div>
-  </div>
+<input type="range" min="0" max="23" step="1"
+  [value]="(gridState.currentHour$ | async) ?? 12"
+  (input)="onSlide($event)" />
 
-  <span class="time">{{ formatHour((gridState.currentHour$ | async) ?? 12) }}</span>
-</div>
+<span class="time">{{ formatHour((gridState.currentHour$ | async) ?? 12) }}</span>

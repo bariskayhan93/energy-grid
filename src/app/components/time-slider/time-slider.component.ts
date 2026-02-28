@@ -6,6 +6,7 @@ import { TimeSimulationService } from '../../services/time-simulation.service';
 @Component({
   selector: 'app-time-slider',
   standalone: true,
+  host: { class: 'glass' },
   imports: [AsyncPipe],
   templateUrl: './time-slider.component.html',
   styleUrl: './time-slider.component.scss',

@@ -1,4 +1,4 @@
-.legend {
+:host {
   top: 60px;
   left: 12px;
   padding: 10px 14px;
@@ -7,7 +7,7 @@
   gap: 6px;
   font-size: 12px;
   color: var(--muted);
-
-  div { display: flex; align-items: center; gap: 8px; }
-  span:first-child { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 }
+
+.row { display: flex; align-items: center; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }

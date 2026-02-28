@@ -7,11 +7,19 @@ export enum LoadStatus {
 }
 
 export const LOAD_STATUS_COLORS: Record<LoadStatus, string> = {
-  [LoadStatus.Safe]: '#22c55e',
+  [LoadStatus.Safe]:     '#22c55e',
   [LoadStatus.Stressed]: '#eab308',
   [LoadStatus.Critical]: '#f97316',
-  [LoadStatus.Error]: '#ef4444',
-  [LoadStatus.Unknown]: '#6b7280',
+  [LoadStatus.Error]:    '#ef4444',
+  [LoadStatus.Unknown]:  '#6b7280',
+};
+
+export const LOAD_STATUS_LABELS: Record<LoadStatus, string> = {
+  [LoadStatus.Safe]:     'Sicher',
+  [LoadStatus.Stressed]: 'Angespannt',
+  [LoadStatus.Critical]: 'Kritisch',
+  [LoadStatus.Error]:    'Fehler',
+  [LoadStatus.Unknown]:  'Nicht berechnet',
 };
 
 export function getLoadStatus(auslastung: number): LoadStatus {
@@ -69,10 +77,6 @@ export type StatusSummary = Record<LoadStatus, number>;
 
 export function isCable(el: GridElement): el is CableElement {
   return el.type === 'cable';
-}
-
-export function isNode(el: GridElement): el is NodeElement {
-  return el.type === 'node';
 }
 
 export function isTransformer(el: GridElement): el is TransformerElement {

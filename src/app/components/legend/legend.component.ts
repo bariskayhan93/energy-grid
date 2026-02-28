@@ -4,6 +4,7 @@ import { LoadStatus, LOAD_STATUS_COLORS, LOAD_STATUS_LABELS } from '../../models
 @Component({
   selector: 'app-legend',
   standalone: true,
+  host: { class: 'glass' },
   templateUrl: './legend.component.html',
   styleUrl: './legend.component.scss',
 })

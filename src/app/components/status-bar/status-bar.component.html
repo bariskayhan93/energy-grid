@@ -1,13 +1,17 @@
-<nav class="bar glass">
-  <h1>Netzanalyse</h1>
+<h1 class="title">Netzanalyse</h1>
 
-  @if (gridState.statusSummary$ | async; as summary) {
-    <div class="badges">
-      @for (s of statuses; track s) {
-        @if (summary[s] > 0) {
-          <span class="badge" [style.background]="colors[s]">{{ summary[s] }}</span>
-        }
+<div class="meta">
+  <span>MV_LV Düsseldorf-Altstadt</span>
+  <b class="badge">15 Min</b>
+  <span>14.07.2025</span>
+</div>
+
+@if (gridState.statusSummary$ | async; as summary) {
+  <div class="counts">
+    @for (s of statuses; track s) {
+      @if (summary[s] > 0) {
+        <span class="pill" [style.background]="colors[s]">{{ labels[s] }}: {{ summary[s] }}</span>
       }
-    </div>
-  }
-</nav>
+    }
+  </div>
+}
