@@ -1,0 +1,28 @@
+@if (gridState.selectedDetail$ | async; as detail) {
+  <aside class="panel glass">
+    <header>
+      <div class="status-dot" [style.background]="statusColor(detail)"></div>
+      <div>
+        <h2>{{ detail.element.name }}</h2>
+        <span class="type-badge">{{ detail.element.type }}</span>
+      </div>
+      <button class="close" (click)="close()">&#10005;</button>
+    </header>
+
+    <table>
+      <tr><td>Auslastung</td><td class="val">{{ detail.entry.measurement.auslastung }} %</td></tr>
+      <tr><td>P<sub>trans</sub></td><td class="val">{{ detail.entry.measurement.P_trans }} kW</td></tr>
+      <tr><td>Q<sub>trans</sub></td><td class="val">{{ detail.entry.measurement.Q_trans }} kVAr</td></tr>
+      <tr><td>S<sub>trans</sub></td><td class="val">{{ detail.entry.measurement.S_trans }} kVA</td></tr>
+      <tr><td>P<sub>verlust</sub></td><td class="val">{{ detail.entry.measurement.P_verlust }} kW</td></tr>
+      <tr><td>Q<sub>verlust</sub></td><td class="val">{{ detail.entry.measurement.Q_verlust }} kVAr</td></tr>
+    </table>
+
+    @if (isCable(detail)) {
+      <div class="extra">Nennleistung: {{ asCable(detail).ratedCapacity }} kVA</div>
+    }
+    @if (isTransformer(detail)) {
+      <div class="extra">Nennleistung: {{ asTrafo(detail).ratedPowerKva }} kVA</div>
+    }
+  </aside>
+}

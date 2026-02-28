@@ -1,0 +1,13 @@
+<nav class="bar glass">
+  <h1>Netzanalyse</h1>
+
+  @if (gridState.statusSummary$ | async; as summary) {
+    <div class="badges">
+      @for (s of statuses; track s) {
+        @if (summary[s] > 0) {
+          <span class="badge" [style.background]="colors[s]">{{ summary[s] }}</span>
+        }
+      }
+    </div>
+  }
+</nav>
