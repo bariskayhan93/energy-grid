@@ -1,59 +1,39 @@
-# EnergyGrid
+# Energy Grid
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+Interactive map visualisation of the European high-voltage transmission network — substations, power lines, and live-style flow animation.
 
-## Development server
+**Live:** https://energy-grid.bariskayhan.com
 
-To start a local development server, run:
+## Tech stack
+
+- Angular 21
+- OpenLayers (map rendering)
+- OpenStreetMap / CartoDB basemaps
+
+## Development
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open http://localhost:4200.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Build
 
 ```bash
-ng generate component component-name
+ng build --configuration production
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Output goes to `dist/energy-grid/browser/`.
 
-```bash
-ng generate --help
-```
+## Deployment
 
-## Building
+Pushed to `main` triggers GitHub Actions:
 
-To build the project run:
+1. `npm ci` + `ng build --configuration production`
+2. rsync to `/var/www/energy-grid/` on the VPS via SSH
 
-```bash
-ng build
-```
+**Required GitHub secrets:** `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The VPS runs Nginx with a certbot-managed SSL certificate for `energy-grid.bariskayhan.com`.
