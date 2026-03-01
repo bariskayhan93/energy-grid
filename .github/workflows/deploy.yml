@@ -17,12 +17,12 @@ jobs:
       - run: npx ng build --configuration production
       - name: Deploy via rsync
         env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          SSH_HOST: ${{ secrets.VPS_HOST }}
+          SSH_USER: ${{ secrets.VPS_USER }}
         run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "$SSH_KEY" > ~/.ssh/id_rsa
           rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no" \
             dist/energy-grid/browser/ \
-            ${SSH_USER}@${SSH_HOST}:htdocs/energy-grid/
+            ${SSH_USER}@${SSH_HOST}:/var/www/energy-grid/
