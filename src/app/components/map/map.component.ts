@@ -17,11 +17,7 @@ const BASE_LAYERS = {
   'CARTO Voyager': L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OSM &copy; CARTO',
     maxZoom: 19
-  }),
-  'Esri Satellite': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: '&copy; Esri',
-    maxZoom: 19
-  }),
+  })
 };
 
 @Component({
